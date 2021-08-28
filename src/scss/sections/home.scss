@@ -1,0 +1,46 @@
+.home{
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  background: #444;
+  padding-top: 20vh;
+  transform: none !important;
+  @include to(l) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .banner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    object-position: center;
+  }
+  .Logo{
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    @include to(l) {
+      margin-bottom: 15vh;
+    }
+    
+  }
+  h1{
+    position: relative;
+    width: 50%;
+    text-transform: uppercase;
+    color: #fdfdfd;
+    font-size: 2em;
+    letter-spacing: 3px;
+    @include to(l) {
+      font-size: 1.5em;
+      text-align: center;
+      width: 90%;
+    }
+  }
+}

@@ -1,0 +1,151 @@
+/*
+  This boilerplate is based in ITCSS and SMACSS
+*/
+
+// Variables de personalizacion de ed-grid
+
+// $breakpoints: (
+//   s: 0,
+//   m: 640px,
+//   lg: 1024px,
+//   xl: 1440px
+// );
+
+$prototype: true; // Activa los estilos de prototipado
+$dev: false; // Activa los estilos para debuggin
+$max-width: 1200px; // Ancho máximo de los contenedores ed-container y ed-grid
+$l-unit: 0.5rem; // Unidad básica de layout (para separaciones verticales, margin y padding)
+$gap: $l-unit * 4; // Separación entre columnas (2rem)
+$legacy: false; // Soporte para versiones antiguas
+$container: ed-container; // Clase para el contenedor (core flexbox)
+$item: ed-item; // Clase para los items (core flexbox)
+$max-grid-columns: 12; // Máximo número de columnas (core css grid)
+$fractions: 3 6; // Fracciones para crear columnas (core flexbox)
+
+//EDGrid
+@import '~aos/dist/aos.css';
+
+@import "~ed-grid/ed-grid";
+
+// Theme (colors and fonts)
+@import "theme/typography";
+
+// Config
+@import "config/functions";
+@import "config/variables";
+@import "config/mixins";
+
+
+ //Hamburgers Menu
+ @import "~hamburgers/dist/hamburgers.min.css";
+
+
+// Base and elements (generic)
+@import "base/base";
+
+// LAYOUT
+// Escribe solo los estilos de layout (division en regiones del viewport)
+@import "layout/layout";
+
+// MODULOS (SMACSS) O COMPONENTES (ITCSS)
+// Son los elementos de UI de tu interfaz, como botones, tablas, menus, etc.
+// Crea los archivos adicionales que necesites (uno por componente)
+@import "components/buttons";
+@import "components/header";
+@import "components/menus";
+@import "components/loading";
+@import "components/contact";
+
+//Section
+
+@import "sections/section";
+@import "sections/home";
+@import "sections/somos";
+@import "sections/planificacion";
+
+// Utilities (hacks)
+// Todos los hacks que hayas necesitado para solucionar conflictos
+// o resolver situaciones extremas. Se espera poder mejorarlos luego.
+@import "hacks/hacks";
+
+
+
+.columnas {
+  @include from(l) {
+    display: grid;
+    grid-template-columns: calc(50% + 7px) 1fr;
+  }
+
+  @include to(l) {
+    display: flex;
+    flex-direction: column;
+    .section__left{
+      order: 1;
+    }
+    .section__right{
+      order: 0;
+    }
+    .section__title{
+      font-size: 2em !important;
+      p{
+        font-size: 1rem !important;
+      }
+    }
+    .solosListContainer{
+      display: grid;
+
+    }
+  }
+}
+.planificacion{
+  @include to(l) {
+    .section__title{
+      font-size: 1.5rem !important;
+    }
+  }
+}
+.consultoria{
+  @include to(l) {
+    .section__title {
+      position: relative;
+      margin-top: 3em;
+    }
+  }
+}
+.equipo{
+  @include to(l) {
+    display: block;
+    padding-bottom: 3em;
+    .section__title{
+      text-align: center;
+    }
+    p{
+      text-align: center;
+    }
+    .section__center {
+      padding-left: 1em;
+      padding-right: 1em;
+      
+    }
+    .section__left{
+      padding-top: 6em;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    .section__right{
+      img{
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        height: auto !important;
+      }
+    }
+  }
+}
+
+.consultoria .section__title {
+  position: relative;
+  @include to(l){
+  margin-top: 0 !important;
+  }
+}
